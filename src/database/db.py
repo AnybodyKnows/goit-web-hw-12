@@ -6,9 +6,6 @@ from sqlalchemy.orm import DeclarativeBase
 from src.conf.config import config
 
 
-
-
-
 class DatabaseSessionManager:
     def __init__(self, url: str):
         self._engine: AsyncEngine | None = create_async_engine(url)
