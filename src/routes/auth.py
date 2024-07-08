@@ -24,8 +24,10 @@ async def signup(body: UserSchema, db: AsyncSession = Depends(get_db)):
 @router.post("/login", response_model=TokenSchema)
 async def login(body: OAuth2PasswordRequestForm = Depends(), db: AsyncSession = Depends(get_db)):
     user = await repository_users.get_user_by_email(body.username, db)
+    print(f"{user} 1")
     if user is None:
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Invalid email")
+    print(f"{user} 2")
     if not auth_service.verify_password(body.password, user.password):
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Invalid password")
     # Generate JWT
