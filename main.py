@@ -21,9 +21,11 @@ def index():
 async def healthchecker(db: AsyncSession = Depends(get_db)):
     try:
         # Make request
+
         result = await db.execute(text("SELECT 1"))
         result = result.fetchone()
         if result is None:
+
             raise HTTPException(status_code=500, detail="Database is not configured correctly")
         return {"message": "Welcome to FastAPI!"}
     except Exception as e:
