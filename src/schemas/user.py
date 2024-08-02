@@ -24,3 +24,7 @@ class TokenSchema(BaseModel):
 
     class Config:
         from_attributes = True
+
+
+class RequestEmail(BaseModel):
+    email: EmailStr

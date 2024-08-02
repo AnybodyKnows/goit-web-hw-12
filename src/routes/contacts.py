@@ -6,7 +6,7 @@ from src.entity.models import User
 from src.repository import contacts as repository_contents
 
 from src.schemas.contacts import ContactSchema, ContactUpdateSchema, ContactResponse
-from src.services.users import auth_service
+from src.services.auth import auth_service
 
 router = APIRouter(prefix='/contacts', tags=['contacts'])
 
